@@ -21,8 +21,14 @@ cp ~/browser-harness-fork/SKILL.md ~/.pi/agent/skills/browser-harness/SKILL.md
 
 **Editable install (recommended for experimental fork):**
 ```bash
+# Install uv (if not present on NixOS)
+nix-shell -p uv
+
 cd ~/browser-harness-fork
 uv tool install -e .
+
+# Add to PATH (add to your shell profile)
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 **NixOS integration via flake:**
