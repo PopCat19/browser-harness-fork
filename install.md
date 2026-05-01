@@ -39,6 +39,32 @@ mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/browser-harness" && ln -sf "$PWD/SK
 
 That makes new Codex or Claude Code sessions in other folders load the runtime browser harness instructions automatically. An empty `~/.codex/skills/browser-harness/` directory is fine; the symlink command above populates it.
 
+## pi-coding-agent Setup
+
+For [pi-coding-agent](https://github.com/PopCat19/pi-coding-agent), register the skill in the user skills directory:
+
+```bash
+mkdir -p ~/.pi/agent/skills/browser-harness
+ln -sf "$PWD/SKILL.md" ~/.pi/agent/skills/browser-harness/SKILL.md
+```
+
+New pi sessions will automatically load browser control capabilities when the skill matches.
+
+### NixOS Integration
+
+On NixOS with home-manager, add to your configuration:
+
+```nix
+# In your home.nix or flake
+home.packages = with pkgs; [
+  uv  # required for browser-harness install
+];
+
+# Then manually: uv tool install -e ~/browser-harness-fork
+```
+
+Or use the experimental `pi-installer.nix` module (if created).
+
 ## Browser bootstrap
 
 Prefer `browser-harness --setup` — it runs the full attach-and-escalate flow below as one interactive command. The manual steps that follow are only for when `--setup` is unavailable or you need to debug a specific failure.

@@ -50,6 +50,26 @@ Useful for stealth, sub-agents, or deployment.<br>
 - `agent-workspace/agent_helpers.py` — helper code the agent edits
 - `agent-workspace/domain-skills/` — reusable site-specific skills the agent edits
 
+## pi-coding-agent Setup
+
+This fork includes experimental integration for [pi-coding-agent](https://github.com/PopCat19/pi-coding-agent).
+
+### Quick Setup
+
+```bash
+# Install as editable tool
+cd ~/browser-harness-fork
+uv tool install -e .
+
+# Register skill with pi
+mkdir -p ~/.pi/agent/skills/browser-harness
+ln -sf "$PWD/SKILL.md" ~/.pi/agent/skills/browser-harness/SKILL.md
+```
+
+After setup, new pi sessions will automatically load browser control capabilities.
+
+See `pi-integration.md` for detailed integration plan and upstream sync strategy.
+
 ## Contributing
 
 PRs and improvements welcome. The best way to help: **contribute a new domain skill** under [agent-workspace/domain-skills/](agent-workspace/domain-skills/) for a site or task you use often (LinkedIn outreach, ordering on Amazon, filing expenses, etc.). Each skill teaches the agent the selectors, flows, and edge cases it would otherwise have to rediscover.
