@@ -1,6 +1,15 @@
 # pi-coding-agent Integration
 
-Purpose: Experimental pi extension for browser-harness — direct browser control via CDP from within pi.
+Purpose: Experimental pi extension for browser-harness. The extension now lives in its own repo: **[browser-harness-pi](https://github.com/PopCat19/browser-harness-pi)**.
+
+## Quick Install
+
+```bash
+pi install github:PopCat19/browser-harness-pi
+cd ~/browser-harness-pi
+uv tool install -e .
+export PATH="$HOME/.local/bin:$PATH"
+```
 
 ## Architecture
 

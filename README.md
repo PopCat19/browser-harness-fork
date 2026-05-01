@@ -52,33 +52,20 @@ Useful for stealth, sub-agents, or deployment.<br>
 
 ## pi-coding-agent Extension
 
-This fork includes a full pi extension with 13 custom tools wrapping browser-harness CDP commands. The LLM controls the browser directly — no bash CLI intermediary.
+The pi extension lives in its own repo: **[PopCat19/browser-harness-pi](https://github.com/PopCat19/browser-harness-pi)**
 
-**Tools:** `browser_navigate` `browser_screenshot` `browser_click` `browser_type` `browser_press_key` `browser_scroll` `browser_js` `browser_page_info` `browser_list_tabs` `browser_switch_tab` `browser_wait` `browser_wait_for_load` `browser_restart_daemon`
+13 custom tools wrapping browser-harness CDP commands. The LLM controls the browser directly.
 
 ```
 pi (TypeScript) → Unix socket → Python daemon → CDP WebSocket → Chrome
 ```
 
-Extension lives at `~/.pi/agent/extensions/browser-harness/` (auto-discovered by pi).
-Symlinked from this repo at `pi-extension/`.
+**Tools:** `browser_navigate` `browser_screenshot` `browser_click` `browser_type` `browser_press_key` `browser_scroll` `browser_js` `browser_page_info` `browser_list_tabs` `browser_switch_tab` `browser_wait` `browser_wait_for_load` `browser_restart_daemon`
 
-### Quick Setup
-
+Install via pi:
 ```bash
-# 1. Install Python daemon
-nix-shell -p uv --run "cd ~/browser-harness-fork && uv tool install -e ."
-export PATH="$HOME/.local/bin:$PATH"
-
-# 2. Register skill
-mkdir -p ~/.pi/agent/skills/browser-harness
-ln -sf "$PWD/SKILL.md" ~/.pi/agent/skills/browser-harness/SKILL.md
-
-# 3. Start Chrome with CDP
-gnome-ungoogled-chromium --remote-debugging-port=9222
+pi install github:PopCat19/browser-harness-pi
 ```
-
-Then in pi: the LLM invokes `browser_navigate` etc. See `pi-integration.md` for architecture details and upstream sync strategy.
 
 ## Contributing
 
